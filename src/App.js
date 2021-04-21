@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { addItemAction, removeItemAction } from './store/cartItemReducer';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,12 +22,13 @@ function App() {
   const addItem = () => {
     const custom = {
       id: Date.now(),
-      value: 'some 100',
+      value: 'some 100' + Date.now(),
     };
-    dispatch({
-      type: 'ADD_ITEM',
-      playload: custom,
-    });
+    dispatch(addItemAction(custom));
+  };
+
+  const removeItem = (id) => {
+    dispatch(removeItemAction(id));
   };
 
   return (
@@ -36,7 +38,11 @@ function App() {
       <button onClick={() => deleteCart()}> - </button>
       <h1 className="text-purple-600">{cartQuantity}</h1>
       {cartItem.length > 0 ? (
-        cartItem.map((item) => <div key={item.id}>{item.value}</div>)
+        cartItem.map((item) => (
+          <div onClick={() => removeItem(item.id)} key={item.id}>
+            {item.value}
+          </div>
+        ))
       ) : (
         <h1 className="text-red-500">Пусто</h1>
       )}
