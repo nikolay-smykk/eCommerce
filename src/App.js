@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from './asyncAction/products';
 import { addItemAction, removeItemAction } from './store/cartItemReducer';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
   const addItem = () => {
     const custom = {
       id: Date.now(),
-      value: 'some 100' + Date.now(),
+      title: 'some 100' + Date.now(),
     };
     dispatch(addItemAction(custom));
   };
@@ -33,14 +34,16 @@ function App() {
 
   return (
     <>
-      <button onClick={() => addItem()}> * </button> <br />
+      <button onClick={() => addItem()}> Добавить item </button> <br />
       <button onClick={() => addCart()}> + </button> <br />
+      <button onClick={() => dispatch(fetchProducts())}>Все продукты</button>
+      <br />
       <button onClick={() => deleteCart()}> - </button>
       <h1 className="text-purple-600">{cartQuantity}</h1>
       {cartItem.length > 0 ? (
         cartItem.map((item) => (
           <div onClick={() => removeItem(item.id)} key={item.id}>
-            {item.value}
+            {item.title}
           </div>
         ))
       ) : (

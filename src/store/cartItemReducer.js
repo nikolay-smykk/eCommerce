@@ -2,15 +2,15 @@ const defaultState = {
   item: [
     {
       id: 123,
-      value: 'some1 value',
+      title: 'some1 value',
     },
     {
       id: 1111123,
-      value: 'some2 value',
+      title: 'some2 value',
     },
     {
       id: 122323,
-      value: 'some3 value',
+      title: 'some3 value',
     },
   ],
 };
@@ -18,6 +18,7 @@ const defaultState = {
 const ADD_ITEM = 'ADD_ITEM';
 const REMOVE_ITEM = 'REMOVE_ITEM';
 const DELETE_ITEM = 'DELETE_ITEM';
+const ADD_ALL_ITEM = 'ADD_ALL_ITEM';
 
 export const cartItemReducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -27,6 +28,11 @@ export const cartItemReducer = (state = defaultState, action) => {
       return {
         ...state.item,
         item: [...state.item.filter((prod) => prod.id !== action.playload)],
+      };
+    case ADD_ALL_ITEM:
+      return {
+        ...state.item,
+        item: [...state.item, ...action.playload],
       };
     case DELETE_ITEM:
       return { ...state, item: [] };
@@ -38,3 +44,7 @@ export const cartItemReducer = (state = defaultState, action) => {
 export const addItemAction = (playload) => ({ type: ADD_ITEM, playload });
 export const removeItemAction = (playload) => ({ type: REMOVE_ITEM, playload });
 export const deleteItemAction = (playload) => ({ type: DELETE_ITEM, playload });
+export const addAllItemAction = (playload) => ({
+  type: ADD_ALL_ITEM,
+  playload,
+});

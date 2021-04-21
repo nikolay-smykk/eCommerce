@@ -1,6 +1,9 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { cartQuantityReducer } from './cartQuantityReducer';
 import { cartItemReducer } from './cartItemReducer';
+
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const rootReducer = combineReducers({
   cartQuantity: cartQuantityReducer,
@@ -9,5 +12,8 @@ const rootReducer = combineReducers({
 
 export const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(applyMiddleware(thunk))
 );
+//   window.__REDUX_DEVTOOLS_EXTENSION__ &&
+//     window.__REDUX_DEVTOOLS_EXTENSION__(applyMiddleware(thunk))
+// );
