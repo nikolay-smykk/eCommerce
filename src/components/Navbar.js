@@ -36,8 +36,8 @@ const Navbar = ({ toggle }) => {
         <Link to="/about" className="p-4">
           About
         </Link>
-        <Link to="/" className="p-4">
-          Catalog
+        <Link to="/category" className="p-4">
+          Category
         </Link>
         <Link to="/" className="p-4">
           Contact

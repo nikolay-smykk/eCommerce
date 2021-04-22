@@ -9,6 +9,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './screen/index';
 import About from './screen/about';
 import Menu from './screen/menu';
+import Category from './screen/category';
 
 function App() {
   const [isOpen, setIseOpen] = useState(false);
@@ -38,6 +39,7 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/about" exact component={About} />
         <Route path="/menu" exact component={Menu} />
+        <Route path="/category" exact component={Category} />
       </Switch>
 
       <Footer />
