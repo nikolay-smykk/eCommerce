@@ -1,18 +1,5 @@
 const defaultState = {
-  item: [
-    {
-      id: 123,
-      title: 'some1 value',
-    },
-    {
-      id: 1111123,
-      title: 'some2 value',
-    },
-    {
-      id: 122323,
-      title: 'some3 value',
-    },
-  ],
+  item: [],
 };
 
 const ADD_ITEM = 'ADD_ITEM';
@@ -32,7 +19,7 @@ export const cartItemReducer = (state = defaultState, action) => {
     case ADD_ALL_ITEM:
       return {
         ...state.item,
-        item: [...state.item, ...action.playload],
+        item: [...action.playload],
       };
     case DELETE_ITEM:
       return { ...state, item: [] };

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.menu-card {
+  @apply flex flex-col justify-center items-center bg-white h-screen font-mono py-40;
+}
+.content-center {
+  @apply flex flex-col justify-center items-center;
+}
+.footer {
+  @apply flex justify-center items-center h-16 bg-black text-white;
+}
+
+.dropdown {
+  @apply grid grid-rows-4 text-center items-center bg-yellow-500;
+}
